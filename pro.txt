@@ -1,0 +1,42 @@
+Test deployment of the smart contract can be found at  0x57Cde2f85fe9AadBe97C1c98C838Eb442bB31f6A    in  
+https://ropsten.etherscan.io/address/0x57cde2f85fe9aadbe97c1c98c838eb442bb31f6a
+
+pragma solidity ^0.4.21 < 0.6.12;
+
+contract ReportCard{
+    
+    string public student_name;
+    uint public roll_no;
+    uint sub1;
+    uint sub2;
+    uint sub3;
+    uint sub4;
+    string public status;
+   
+    
+    function ReportCard(string name,uint roll,uint newMaths,uint newScience,uint newEnglish,uint newHistory)public{
+        
+       student_name = name;
+       roll_no = roll;
+       sub1 = newMaths;
+       sub2 = newScience;
+       sub3 = newEnglish;
+       sub4 = newHistory;
+       uint sum = newMaths + newScience + newEnglish + newHistory;
+       if(sum<200)
+       {
+            status = "FAIL"; 
+       }
+       else
+       {
+           status = "PASS";
+       }
+    }
+    
+    function getReport()public view returns(string,uint,uint,uint,uint,uint,string){
+        
+        return (student_name,roll_no,sub1,sub2,sub3,sub4,status);
+   
+    }
+    
+}
